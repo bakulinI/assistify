@@ -1,4 +1,5 @@
 .idea
+backend\.idea
 venv
 .env
 # .gitignore for Django Projects

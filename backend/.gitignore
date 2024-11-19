@@ -1,5 +1,4 @@
 .idea
-backend\.idea
 venv
 .env
 # .gitignore for Django Projects
@@ -11,8 +10,6 @@ __pycache__/
 
 # Database
 *.sqlite3
-idea/
-.idea/
 # Development/Debugging
 *.pyc
 *.pyo

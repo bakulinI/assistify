@@ -7,7 +7,9 @@ token.txt
 *.pyc
 *.pyo
 __pycache__/
-
+# IntellijIdea files
+*.iml
+out
 # Database
 *.sqlite3
 # Development/Debugging

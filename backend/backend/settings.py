@@ -84,8 +84,8 @@ if MODE == "DEV":
     })
 else:
      DATABASES['default'].update({
-        'HOST': '',
-        'NAME': '',
+        'HOST': 'Eclipso.mysql.pythonanywhere-services.com',
+        'NAME': 'Eclipso$assistify',
         'USER': DB_LOGIN,
         'PASSWORD': DB_PASSWORD,
     })

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from assistify.models import CustomUser
+from assistify.models import CustomUser, Dialog
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -34,4 +34,13 @@ class UserListSerializer(serializers.ModelSerializer):
             "username",
             "role",
             "email",
+        ]
+
+
+class DialogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Dialog
+        fields = [
+            "user",
+            "settings"
         ]

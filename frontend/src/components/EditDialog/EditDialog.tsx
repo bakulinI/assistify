@@ -3,10 +3,12 @@ import { FC, useMemo } from 'react';
 import ChatBot, { ChatBotProvider, Flow, Settings } from 'react-chatbotify';
 import { Link } from 'react-router-dom';
 import { Editor } from './components/Editor/Editor';
+import { useChatStream } from './hooks';
 
 const { Title } = Typography;
 
 export const EditDialog: FC = () => {
+  const { mutateAsync } = useChatStream();
   const themes = [
     { id: 'solid_purple_haze', version: '0.1.0' },
     { id: 'simple_blue', version: '0.1.0' },
@@ -14,11 +16,15 @@ export const EditDialog: FC = () => {
 
   const flow: Flow = {
     start: {
-      message: 'Привет, кто ты?',
-      path: 'end',
+      message: 'Ask me anything!',
+      path: 'loop',
     },
-    end: {
-      message: (params) => `Привет, ${params.userInput}!`,
+
+    loop: {
+      message: async (params) => {
+        await mutateAsync(params);
+      },
+      path: 'loop',
     },
   };
 
@@ -61,7 +67,7 @@ export const EditDialog: FC = () => {
     <section>
       <div className="my-container pt-14">
         <Link to={'/'}>
-          <img className="w-14 h-9" src="/logo.svg" />
+          <img className="w-14 h-9" src="./logo.svg" />
         </Link>
         <div className="bg-white rounded-[30px] pb-44 pt-8 px-6">
           <Title className="text-2xl mx-auto leading-5 max-w-[139px] sm:max-w-full text-center">

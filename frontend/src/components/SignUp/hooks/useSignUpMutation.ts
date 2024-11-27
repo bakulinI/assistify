@@ -19,7 +19,7 @@ export const useSignUpMutation = () => {
     },
     onSuccess: (data) => {
       console.log(data);
-      messageApi.error('Вы успешно зарегистрировались');
+      messageApi.success('Вы успешно зарегистрировались');
       setItem('token', data.data['access_token']);
       setAuth(true);
       queryClient.invalidateQueries([ME]);

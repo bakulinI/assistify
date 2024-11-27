@@ -14,7 +14,9 @@ from .serializer import CustomUserSerializer, UserListSerializer, GetTokenSerial
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from rest_framework.decorators import action
-
+from rest_framework.decorators import api_view
+from .get_message import stream_chat_completion
+from django.http import StreamingHttpResponse
 class RegistrationAPIView(APIView):
     permission_classes = [AllowAny]
 
@@ -234,6 +236,21 @@ class UserViewSet(ModelViewSet):
 
         user = request.user
         return Response(UserListSerializer(user).data)
+
+
+
+@api_view(['POST'])
+def chat(request):
+    messages = request.data['message']
+    print(messages)
+    # messages = [{"role": "user", "content": "Hello"}]
+    response = StreamingHttpResponse(
+        stream_chat_completion(messages),
+        content_type="text/plain",  # Или "text/event-stream" для SSE
+    )
+    response["Cache-Control"] = "no-cache"
+ 
+    return response
 
 class DialogViewSet(ModelViewSet):
     queryset = Dialog.objects.all()

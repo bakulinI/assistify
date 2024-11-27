@@ -53,7 +53,7 @@ export const EditDialog: FC = () => {
         // showFooter:false
       },
       header: {
-        title: <div style={{ cursor: 'pointer', margin: 0, fontSize: 20, fontWeight: 'bold' }}>Мой title</div>,
+        title: <div style={{ cursor: 'pointer', margin: 0, fontSize: 20, fontWeight: 'bold' }}>Assistify</div>,
         avatar: '/logo.svg',
       },
       chatHistory: {

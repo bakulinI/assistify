@@ -64,11 +64,14 @@ export const fetchChatStream = async (params) => {
     const { userInput, streamMessage, endStreamMessage } = params;
 
     // // URL API
-
+    const history = JSON.parse(localStorage.getItem('conversations_summary'));
+    console.log(history);
     //  const url = `http://127.0.0.1:8000/chat/?message=${encodeURIComponent(userInput)}`;
     const response = await fetch(`${apiUrl}chat/`, {
       method: 'POST',
+      body: JSON.stringify({ message: [{ content: userInput, role: 'user' }] }),
       headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
       },
     });

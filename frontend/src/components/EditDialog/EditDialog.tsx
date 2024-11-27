@@ -67,7 +67,7 @@ export const EditDialog: FC = () => {
     <section>
       <div className="my-container pt-14">
         <Link to={'/'}>
-          <img className="w-14 h-9" src="./logo.svg" />
+          <img className="w-14 h-9" src="/logo.svg" />
         </Link>
         <div className="bg-white rounded-[30px] pb-44 pt-8 px-6">
           <Title className="text-2xl mx-auto leading-5 max-w-[139px] sm:max-w-full text-center">

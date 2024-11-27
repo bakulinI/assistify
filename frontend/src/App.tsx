@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RequiredAuth from './components/shared/RequiredAuth/RequiredAuth';
 import { HomePage, SignInPage, SignUpPage } from './pages';
 import LayoutPage from './pages/Layout';
+import { EditDialogPage } from './pages/EditDialog';
 
 
 const queryClient = new QueryClient({
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />,
+      },
+      {
+        path: '/edit',
+        element: <EditDialogPage />,
       },
       {
         path: '/signup',

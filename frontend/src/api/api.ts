@@ -72,6 +72,7 @@ export const fetchChatStream = async (params) => {
       body: JSON.stringify({ message: [{ content: userInput, role: 'user' }] }),
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
         Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
       },
     });

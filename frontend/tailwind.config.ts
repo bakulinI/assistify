@@ -4,7 +4,9 @@ export default {
   content: ['./src/**/*.{html,tsx}'],
   theme: {
     extend: {},
-
+    fontFamily: {
+      main: ['Inter'],
+    },
     backgroundImage: {
       main: 'linear-gradient(162.46deg, #3D8CEC 0%, #3DB66B 100%);',
       auth: "url('/bg.svg')",

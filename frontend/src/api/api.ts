@@ -1,6 +1,7 @@
 import { User } from '@/common/types';
 import { AccesTokenResponse, SignInParams, SignUpParams } from '@/types';
 import axios from 'axios';
+import { Settings, Params } from "react-chatbotify"
 
 // const apiUrl = 'http://localhost:8000/api/';
 const apiUrl = import.meta.env.VITE_API;
@@ -59,14 +60,14 @@ class Api {
 
 export const api = new Api();
 
-export const fetchChatStream = async (params) => {
+export const fetchChatStream = async (params: Params, settings: Settings) => {
   try {
-    const { userInput, streamMessage, endStreamMessage } = params;
+    const { userInput, streamMessage, endStreamMessage, } = params;
 
     // // URL API
     const history = JSON.parse(localStorage.getItem('conversations_summary'));
-    console.log(history);
-    //  const url = `http://127.0.0.1:8000/chat/?message=${encodeURIComponent(userInput)}`;
+
+ 
     const response = await fetch(`${apiUrl}chat/`, {
       method: 'POST',
       body: JSON.stringify({ message: [{ content: userInput, role: 'user' }] }),
@@ -102,11 +103,45 @@ export const fetchChatStream = async (params) => {
       offset = text.length; // Обновляем смещение для корректного отслеживания части текста
     }
 
-    // Отправляем весь накопленный текст
-    await streamMessage(text);
+    if (!window.SpeechSynthesisUtterance) {
+      console.info("Speech Synthesis API is not supported in this environment.");
+      return;
+    }
+    
+	const utterance = new window.SpeechSynthesisUtterance();
+    
+  const {voiceNames,rate,volume,language} = settings['audio'] 
 
+
+    utterance.lang = language;
+    utterance.rate = rate;
+    utterance.volume = volume
+    utterance.text = text;
+
+    let voiceIdentified = false;
+    for (const voiceName of voiceNames) {
+      window.speechSynthesis.getVoices().find((voice) => {
+        if (voice.name === voiceName) {
+          utterance.voice = voice;
+          window.speechSynthesis.speak(utterance);
+          voiceIdentified = true;
+          return;
+        }
+      });
+      if (voiceIdentified) {
+        break;
+      }
+    }
+    
+    // if cannot find voice, use default
+    if (!voiceIdentified) {
+      window.speechSynthesis.speak(utterance);
+    }
+    
     // Уведомляем, что поток завершен
-    await endStreamMessage();
+    return endStreamMessage('');
+
+
   } catch (error) {
     console.error('Stream error:', error);
     await params.streamMessage('Error fetching the chat stream.');

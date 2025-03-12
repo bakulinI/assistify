@@ -20,7 +20,6 @@ export const Editor: FC = () => {
   const [fonts, setFont] = useState('');
   const [tooltip, setTooltip] = useState(false);
   const [tooltipText, setTooltipText] = useState('Talk to me! 😊');
-  console.log(tooltip ? 'CLOSE' : 'NEVER');
   useEffect(() => {
     updateSettings({
       general: {
@@ -35,7 +34,6 @@ export const Editor: FC = () => {
         text: tooltipText,
       },
     });
-    console.log(settings);
   }, [primaryColor, secondaryColor, fonts, tooltip, tooltipText]);
 
   return (

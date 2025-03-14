@@ -1,6 +1,6 @@
 import { Typography } from 'antd';
 import { FC, useMemo } from 'react';
-import ChatBot, { ChatBotProvider, Flow, Settings } from 'react-chatbotify';
+import ChatBot, { ChatBotProvider, Flow, Settings,useAudio } from 'react-chatbotify';
 import { Link } from 'react-router-dom';
 import { Editor } from './components/Editor/Editor';
 import { useChatStream } from './hooks';
@@ -8,7 +8,42 @@ import { useChatStream } from './hooks';
 const { Title } = Typography;
 
 export const EditDialog: FC = () => {
-  const { mutateAsync } = useChatStream();
+
+  const settings: Settings = 
+  {
+    device:{
+      mobileEnabled:true,
+      desktopEnabled:true,
+    },
+    botBubble: {
+      showAvatar: true,
+    },
+    audio: {
+      voiceNames: ['Microsoft Pavel - Russian (Russia) (ru-RU)'],
+      disabled: false,
+      rate:1,
+      volume:1,
+      language: 'ru-RU',
+    },
+    voice: {
+      language: 'ru-RU',
+
+      disabled: false,
+    },
+    general: {
+      embedded: false,
+      // showFooter:false
+    },
+    header: {
+      title: <div style={{ cursor: 'pointer', margin: 0, fontSize: 20, fontWeight: 'bold' }}>Assistify</div>,
+      avatar: '/logo.svg',
+    },
+    chatHistory: {
+      storageKey: 'conversations_summary',
+    },
+  }
+
+  const { mutateAsync } = useChatStream(settings);
   const themes = [
     { id: 'solid_purple_haze', version: '0.1.0' },
     { id: 'simple_blue', version: '0.1.0' },
@@ -19,6 +54,7 @@ export const EditDialog: FC = () => {
       message: 'Ask me anything!',
       path: 'loop',
     },
+    
 
     loop: {
       message: async (params) => {
@@ -28,40 +64,8 @@ export const EditDialog: FC = () => {
     },
   };
 
-  const settings: Settings = useMemo(
-    () => ({
-      // device:{
-      //   // mobileEnabled:true,
-      //   // desktopEnabled:true,
-      // },
-      botBubble: {
-        showAvatar: true,
-      },
-      audio: {
-        voiceNames: ['Google русский (ru-RU)'],
-        disabled: false,
 
-        language: 'ru-RU',
-      },
-      voice: {
-        language: 'ru-RU',
-
-        disabled: false,
-      },
-      general: {
-        embedded: false,
-        // showFooter:false
-      },
-      header: {
-        title: <div style={{ cursor: 'pointer', margin: 0, fontSize: 20, fontWeight: 'bold' }}>Assistify</div>,
-        avatar: '/logo.svg',
-      },
-      chatHistory: {
-        storageKey: 'conversations_summary',
-      },
-    }),
-    [],
-  );
+   
 
   return (
     <section>

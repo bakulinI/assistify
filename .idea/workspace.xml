@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b25870d9-cad3-40fd-a819-bb57dd915733" name="Changes" comment="" />
+    <list default="true" id="b25870d9-cad3-40fd-a819-bb57dd915733" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/EditDialog/EditDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/EditDialog/EditDialog.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,21 +15,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "bakulinI"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;bakulinI&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/bakulinI/assistify.git",
-    "accountId": "6bd72cdc-73ea-4a10-b54f-8582d9b39d92"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/bakulinI/assistify.git&quot;,
+    &quot;accountId&quot;: &quot;6bd72cdc-73ea-4a10-b54f-8582d9b39d92&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2uDqlU9oFGOWoQssRzNX4uhc871" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -92,7 +94,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741793643521</updated>
-      <workItem from="1741793644566" duration="649000" />
+      <workItem from="1741793644566" duration="2536000" />
+      <workItem from="1741845793940" duration="112000" />
+      <workItem from="1741970173679" duration="326000" />
     </task>
     <servers />
   </component>

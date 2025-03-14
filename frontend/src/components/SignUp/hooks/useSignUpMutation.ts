@@ -18,7 +18,6 @@ export const useSignUpMutation = () => {
       message.error(error.message);
     },
     onSuccess: (data) => {
-      console.log(data);
       messageApi.success('Вы успешно зарегистрировались');
       setItem('token', data.data['access_token']);
       setAuth(true);

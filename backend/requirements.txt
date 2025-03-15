@@ -22,3 +22,8 @@ rpds-py==0.21.0
 sqlparse==0.5.1
 tzdata==2024.2
 uritemplate==4.1.1
+faker
+gunicorn
+markdown
+psycopg[binary, pool]
+django-filter

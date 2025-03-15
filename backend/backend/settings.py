@@ -1,6 +1,8 @@
 from datetime import timedelta
 from pathlib import Path
 import os
+
+from django.contrib import staticfiles
 from django.urls import reverse_lazy
 from dotenv import load_dotenv
 
@@ -118,7 +120,6 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-
 AUTH_USER_MODEL = 'assistify.CustomUser'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

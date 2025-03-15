@@ -22,6 +22,7 @@ export const EditDialog: FC = () => {
       voiceNames: ['Microsoft Pavel - Russian (Russia) (ru-RU)'],
       disabled: false,
       rate:1,
+      defaultToggledOn:true,
       volume:1,
       language: 'ru-RU',
     },
@@ -36,7 +37,8 @@ export const EditDialog: FC = () => {
     },
     header: {
       title: <div style={{ cursor: 'pointer', margin: 0, fontSize: 20, fontWeight: 'bold' }}>Assistify</div>,
-      avatar: '/logo.svg',
+      avatar: '/Logo.svg',
+
     },
     chatHistory: {
       storageKey: 'conversations_summary',
@@ -71,7 +73,7 @@ export const EditDialog: FC = () => {
     <section>
       <div className="my-container pt-14">
         <Link to={'/'}>
-          <img className="w-14 h-9" src="/logo.svg" />
+          <img className="w-14 h-9" src="/Logo.svg" />
         </Link>
         <div className="bg-white rounded-[30px] pb-44 pt-8 px-6">
           <Title className="text-2xl mx-auto leading-5 max-w-[139px] sm:max-w-full text-center">

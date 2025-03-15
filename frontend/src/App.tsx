@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/edit',
-        element: <EditDialogPage />,
+        element:<RequiredAuth><EditDialogPage /></RequiredAuth> ,
       },
       {
         path: '/signup',

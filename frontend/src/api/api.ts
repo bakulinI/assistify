@@ -103,14 +103,15 @@ export const fetchChatStream = async (params: Params, settings: Settings) => {
       offset = text.length; // Обновляем смещение для корректного отслеживания части текста
     }
 
-    if (!window.SpeechSynthesisUtterance) {
+    if(!settings.voice.disabled){
+        if (!window.SpeechSynthesisUtterance) {
       console.info("Speech Synthesis API is not supported in this environment.");
       return;
     }
-    
+
 	const utterance = new window.SpeechSynthesisUtterance();
-    
-  const {voiceNames,rate,volume,language} = settings['audio'] 
+
+  const {voiceNames,rate,volume,language} = settings['audio']
 
 
     utterance.lang = language;
@@ -132,11 +133,14 @@ export const fetchChatStream = async (params: Params, settings: Settings) => {
         break;
       }
     }
-    
+
     // if cannot find voice, use default
     if (!voiceIdentified) {
       window.speechSynthesis.speak(utterance);
     }
+    }
+
+
     
     // Уведомляем, что поток завершен
     return endStreamMessage('');
